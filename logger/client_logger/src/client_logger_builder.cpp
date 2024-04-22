@@ -1,67 +1,108 @@
-#include <not_implemented.h>
+#include "client_logger_builder.h"
+#include "client_logger.h"
+#include <iostream>
+#include <fstream>
+#include <windows.h>
+#include "nlohmann/json.hpp"
 
-#include "../include/client_logger_builder.h"
+client_logger_builder::client_logger_builder() {}
 
-client_logger_builder::client_logger_builder()
-{
-    throw not_implemented("client_logger_builder::client_logger_builder()", "your code should be here...");
+client_logger_builder::client_logger_builder(const client_logger_builder &other) : _streams(other._streams) {}
+
+client_logger_builder &client_logger_builder::operator=(const client_logger_builder &other)
+        {
+    if (this != &other) this->_streams = other._streams;
+    return *this;
 }
 
-client_logger_builder::client_logger_builder(
-    client_logger_builder const &other)
-{
-    throw not_implemented("client_logger_builder::client_logger_builder(client_logger_builder const &other)", "your code should be here...");
+client_logger_builder::client_logger_builder(client_logger_builder &&other) noexcept : _streams(std::move(other._streams)) {}
+
+client_logger_builder &client_logger_builder::operator=(client_logger_builder &&other) noexcept
+        {
+    if (this != &other) this->_streams = std::move(other._streams);
+    return *this;
 }
 
-client_logger_builder &client_logger_builder::operator=(
-    client_logger_builder const &other)
+client_logger_builder::~client_logger_builder() noexcept {}
+
+client_logger_builder *client_logger_builder::add_file_stream(const std::string &stream_file_path, logger::severity severity)
 {
-    throw not_implemented("client_logger_builder &client_logger_builder::operator=(client_logger_builder const &other)", "your code should be here...");
+    std::string full_path = "";
+
+    if (!stream_file_path.empty())
+    {
+        char buffer[MAX_PATH];
+        DWORD len = GetFullPathNameA(stream_file_path.c_str(), MAX_PATH, buffer, nullptr);
+
+        if (len > 0 && len < MAX_PATH)
+        {
+            full_path = buffer;
+        } else {
+            throw std::runtime_error("Failed to get full path for file stream");
+        }
+    }
+
+    this->_streams[full_path].insert(severity);
+    return this;
 }
 
-client_logger_builder::client_logger_builder(
-    client_logger_builder &&other) noexcept
+
+
+client_logger_builder *client_logger_builder::add_console_stream(logger::severity severity)
 {
-    throw not_implemented("client_logger_builder::client_logger_builder(client_logger_builder &&other) noexcept", "your code should be here...");
+    return this->add_file_stream("", severity);
 }
 
-client_logger_builder &client_logger_builder::operator=(
-    client_logger_builder &&other) noexcept
-{
-    throw not_implemented("client_logger_builder &client_logger_builder::operator=(client_logger_builder &&other) noexcept", "your code should be here...");
+client_logger_builder *client_logger_builder::transform_with_configuration(const std::string &configuration_file_path,
+                                                                           const std::string &configuration_path)
+                                                                           {
+    std::ifstream jsonFileStream(configuration_file_path);
+    if (!jsonFileStream.is_open())
+    {
+        throw std::runtime_error("Failed to open configuration file: " + configuration_file_path);
+    }
+
+    nlohmann::json data;
+    try
+    {
+        jsonFileStream >> data;
+    } catch (const std::exception &ex) {
+        throw std::runtime_error("Failed to parse JSON configuration file: " + std::string(ex.what()));
+    }
+
+    nlohmann::json element;
+    try
+    {
+        element = data.at(configuration_path);
+    } catch (const std::exception &ex) {
+        throw std::runtime_error("Configuration path '" + configuration_path + "' hasn't been found in JSON file");
+    }
+
+    std::string file = element["file"].get<std::string>();
+    std::vector<logger::severity> severities = element["severity"];
+    for (const auto &severity : severities)
+    {
+        if (file.empty())
+            add_console_stream(severity);
+        else
+            add_file_stream(file, severity);
+    }
+    return this;
 }
 
-client_logger_builder::~client_logger_builder() noexcept
+client_logger_builder *client_logger_builder::clear()
 {
-    throw not_implemented("client_logger_builder::~client_logger_builder() noexcept", "your code should be here...");
-}
-
-logger_builder *client_logger_builder::add_file_stream(
-    std::string const &stream_file_path,
-    logger::severity severity)
-{
-    throw not_implemented("logger_builder *client_logger_builder::add_file_stream(std::string const &stream_file_path, logger::severity severity)", "your code should be here...");
-}
-
-logger_builder *client_logger_builder::add_console_stream(
-    logger::severity severity)
-{
-    throw not_implemented("logger_builder *client_logger_builder::add_console_stream(logger::severity severity)", "your code should be here...");
-}
-
-logger_builder* client_logger_builder::transform_with_configuration(
-    std::string const &configuration_file_path,
-    std::string const &configuration_path)
-{
-    throw not_implemented("logger_builder* client_logger_builder::transform_with_configuration(std::string const &configuration_file_path, std::string const &configuration_path)", "your code should be here...");
-}
-
-logger_builder *client_logger_builder::clear()
-{
-    throw not_implemented("logger_builder *client_logger_builder::clear()", "your code should be here...");
+    this->_streams.clear();
+    return this;
 }
 
 logger *client_logger_builder::build() const
 {
-    throw not_implemented("logger *client_logger_builder::build() const", "your code should be here...");
+    auto *logger = new client_logger;
+
+    for (const auto &entry : this->_streams)
+    {
+        logger->insert_in_stream(entry.first, entry.second);
+    }
+    return logger;
 }
