@@ -15,12 +15,15 @@ private:
 
     static std::unordered_map<std::string, std::pair<std::ofstream*, size_t>> _all_streams;
 
+    std::string _format_string;
+
+
 public:
 
     client_logger() = default;
 
     client_logger(
-        client_logger const &other);
+            const client_logger &other, const std::string &format_string);
 
     client_logger &operator=(
         client_logger const &other);

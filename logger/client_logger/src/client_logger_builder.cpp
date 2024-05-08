@@ -5,17 +5,10 @@
 #include <windows.h>
 #include "nlohmann/json.hpp"
 
-client_logger_builder::client_logger_builder() {}
-
-client_logger_builder::client_logger_builder(const client_logger_builder &other) : _streams(other._streams) {}
-
-client_logger_builder &client_logger_builder::operator=(const client_logger_builder &other)
-        {
-    if (this != &other) this->_streams = other._streams;
-    return *this;
+client_logger_builder::client_logger_builder()
+{
+    this->_format_string = "%d %t %s %m";
 }
-
-client_logger_builder::client_logger_builder(client_logger_builder &&other) noexcept : _streams(std::move(other._streams)) {}
 
 client_logger_builder &client_logger_builder::operator=(client_logger_builder &&other) noexcept
         {
@@ -23,7 +16,17 @@ client_logger_builder &client_logger_builder::operator=(client_logger_builder &&
     return *this;
 }
 
+
 client_logger_builder::~client_logger_builder() noexcept {}
+
+
+client_logger_builder* client_logger_builder::add_format_string(const std::string &format_string)
+{
+    this->_format_string = format_string;
+//    std::cout << this->_format_string << std::endl;
+
+    return this;
+}
 
 client_logger_builder *client_logger_builder::add_file_stream(const std::string &stream_file_path, logger::severity severity)
 {
@@ -50,7 +53,7 @@ client_logger_builder *client_logger_builder::add_file_stream(const std::string 
 
 client_logger_builder *client_logger_builder::add_console_stream(logger::severity severity)
 {
-    return this->add_file_stream("", severity);
+    return this->add_file_stream("", severity);//+console
 }
 
 client_logger_builder *client_logger_builder::transform_with_configuration(const std::string &configuration_file_path,
@@ -98,7 +101,8 @@ client_logger_builder *client_logger_builder::clear()
 
 logger *client_logger_builder::build() const
 {
-    auto *logger = new client_logger;
+    client_logger empty_logger;
+    auto *logger = new client_logger(empty_logger, _format_string);
 
     for (const auto &entry : this->_streams)
     {

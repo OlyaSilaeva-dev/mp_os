@@ -24,6 +24,7 @@ TEST(client_logger, test_file_and_console_streams)
     logger* new_logger = builder.add_console_stream(logger::severity::debug)
             ->add_console_stream(logger::severity::trace)
             ->add_console_stream(logger::severity::information)
+            ->add_format_string("%d" "%m")
             ->add_file_stream("C:\\logs\\test.txt", logger::severity::debug)
             ->build();
 

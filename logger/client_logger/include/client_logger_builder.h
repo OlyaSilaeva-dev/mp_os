@@ -7,8 +7,10 @@
 class client_logger_builder final:
     public logger_builder
 {
+
 private:
     std::map<std::string, std::set<logger::severity>> _streams;
+    std::string _format_string;
 
 public:
 
@@ -36,6 +38,9 @@ public:
 
     client_logger_builder *add_console_stream(
         logger::severity severity) override;
+
+    client_logger_builder* add_format_string(std:: string const &format_string) override;
+
 
     client_logger_builder* transform_with_configuration(
         std::string const &configuration_file_path,

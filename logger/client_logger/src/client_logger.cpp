@@ -3,7 +3,8 @@
 
 std::unordered_map<std::string, std::pair<std::ofstream*, size_t>> client_logger::_all_streams;
 
-client_logger::client_logger(const client_logger &other)
+
+client_logger::client_logger(const client_logger &other, const std::string &format_string): _format_string(format_string)
 {
     this->_streams = other._streams;
     this->add_to_all_streams();
@@ -29,7 +30,6 @@ client_logger &client_logger::operator=(client_logger &&other) noexcept
         {
     if (this != &other)
     {
-        // destructor step
         this->clear_object();
         this->_streams = std::move(other._streams);
     }
@@ -65,17 +65,17 @@ void client_logger::clear_object()
 
 void client_logger::insert_in_stream(const std::string &path, std::set<logger::severity> severity_set)
 {
-    auto *stream = new(std::ofstream);
+    std::ofstream* stream;
     if (path.empty())
     {
-        stream = reinterpret_cast<std::ofstream*>(&std::cout);
-        this->_streams.emplace(std::make_pair(path, std::make_pair(stream, std::move(severity_set))));
+        stream =  reinterpret_cast<std::ofstream*>(&std::cout);
     }
     else
     {
-        stream->open(path);
-        this->_streams.emplace(std::make_pair(path, std::make_pair(stream, std::move(severity_set))));
+        stream = new std::ofstream(path);
     }
+
+    this->_streams.emplace(std::make_pair(path, std::make_pair(stream, std::move(severity_set))));
 
     if (_all_streams.find(path) != _all_streams.end())
     {
@@ -98,14 +98,77 @@ logger const *client_logger::log(const std::string &text, logger::severity sever
 
             std::ofstream* file;
             if (path_of_log_file.empty()) {
-                file = reinterpret_cast<std::ofstream*>(&std::cout);
-            } else {
-                file = _all_streams.find(path_of_log_file)->second.first;
-            }
+//                std::cout << this->_format_string << std::endl;
+                for(int i = 0; _format_string[i] != '\0' && _format_string[i + 1] != '\0'; i++)
+                {
+                    if(_format_string[i] == '%' && _format_string[i + 1] == 'd')
+                    {
+                        std::cout << "[" << logger::current_date_to_string() << "] ";
+                        i++;
+                    }
 
-            *file << severity_to_string(severity) << " " << text << " " << current_datetime_to_string() << std::endl;
+                    else if(_format_string[i] == '%' && _format_string[i + 1] == 't')
+                    {
+                        std::cout << "[" << logger::current_time_to_string() << "] ";
+                        i++;
+
+                    }
+
+                    else if(_format_string[i] == '%' && _format_string[i + 1] == 's')
+                    {
+                        std::cout << "[" << logger::severity_to_string(severity) << "] ";
+                        i++;
+                    }
+
+                    else if(_format_string[i] == '%' && _format_string[i + 1] == 'm')
+                    {
+                        std::cout << text << ' ';
+                        i++;
+                    }
+                }
+                std::cout << std::endl;
+            } else //в файл
+            {
+                auto file = path_of_log_file.empty() ? reinterpret_cast<std::ofstream*>(&std::cout) : _all_streams.find(path_of_log_file)->second.first;
+
+                for(int i = 0; _format_string[i] != '\0' && _format_string[i + 1] != '\0'; i++)
+                {
+
+                    if(_format_string[i] == '%' && _format_string[i + 1] == 'd')
+                    {
+                        (*entry.second.first) << "[" << logger::current_date_to_string() << "] ";
+                        i++;
+                    }
+
+                    else if(_format_string[i] == '%' && _format_string[i + 1] == 't')
+                    {
+                        (*entry.second.first) << "[" << logger::current_time_to_string() << "] ";
+                        i++;
+                    }
+
+                    else if(_format_string[i] == '%' && _format_string[i + 1] == 's')
+                    {
+                        (*entry.second.first) << "[" << logger::severity_to_string(severity) << "] ";
+
+                        *file<< "[" << severity_to_string(severity)<<" "<<text<< " ";
+                        i++;
+                    }
+
+                    else if(_format_string[i] == '%' && _format_string[i + 1] == 'm') {
+
+                        *file << severity_to_string(severity) << " " << text << " ";
+                        i++;
+                    }
+                }
+
+                (*entry.second.first) << std::endl;
+            }
         }
     }
+
+
+
+
     return this;
 }
 
