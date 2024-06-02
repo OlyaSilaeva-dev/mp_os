@@ -98,7 +98,6 @@ logger const *client_logger::log(const std::string &text, logger::severity sever
 
             std::ofstream* file;
             if (path_of_log_file.empty()) {
-//                std::cout << this->_format_string << std::endl;
                 for(int i = 0; _format_string[i] != '\0' && _format_string[i + 1] != '\0'; i++)
                 {
                     if(_format_string[i] == '%' && _format_string[i + 1] == 'd')
@@ -127,7 +126,8 @@ logger const *client_logger::log(const std::string &text, logger::severity sever
                     }
                 }
                 std::cout << std::endl;
-            } else //в файл
+            }
+            else //в файл
             {
                 auto file = path_of_log_file.empty() ? reinterpret_cast<std::ofstream*>(&std::cout) : _all_streams.find(path_of_log_file)->second.first;
 
@@ -136,32 +136,30 @@ logger const *client_logger::log(const std::string &text, logger::severity sever
 
                     if(_format_string[i] == '%' && _format_string[i + 1] == 'd')
                     {
-                        (*entry.second.first) << "[" << logger::current_date_to_string() << "] ";
+                        *file << "[" << logger::current_date_to_string() << "] ";
                         i++;
                     }
 
                     else if(_format_string[i] == '%' && _format_string[i + 1] == 't')
                     {
-                        (*entry.second.first) << "[" << logger::current_time_to_string() << "] ";
+                        *file << "[" << logger::current_time_to_string() << "] ";
                         i++;
                     }
 
                     else if(_format_string[i] == '%' && _format_string[i + 1] == 's')
                     {
-                        (*entry.second.first) << "[" << logger::severity_to_string(severity) << "] ";
-
-                        *file<< "[" << severity_to_string(severity)<<" "<<text<< " ";
+                        *file<< "[" << severity_to_string(severity)<< "] ";
                         i++;
                     }
 
                     else if(_format_string[i] == '%' && _format_string[i + 1] == 'm') {
 
-                        *file << severity_to_string(severity) << " " << text << " ";
+                        *file << text << " ";
                         i++;
                     }
                 }
 
-                (*entry.second.first) << std::endl;
+                *file << std::endl;
             }
         }
     }

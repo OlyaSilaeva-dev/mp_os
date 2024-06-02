@@ -10,7 +10,7 @@ TEST(allocatorGlobalHeapTests, test1)
     logger_builder *logger_builder_instance = new client_logger_builder;
     
     logger *logger_instance = logger_builder_instance
-        ->add_file_stream("gh_alc_test1_logs.txt", logger::severity::debug)
+        ->add_file_stream("C:\\src\\GitHub\\mp_os\\allocator\\allocator_global_heap\\tests\\gh_alc_test1_logs.txt", logger::severity::debug)
         ->build();
     delete logger_builder_instance;
     
@@ -20,26 +20,25 @@ TEST(allocatorGlobalHeapTests, test1)
     allocator *allocator_another_instance = new allocator_global_heap(logger_instance);
     allocator_another_instance->deallocate(block);
     delete allocator_another_instance;
-    
+
     delete logger_instance;
 }
 
 TEST(allocatorGlobalHeapTests, test2)
 {
-    
+
     logger_builder *logger_builder_instance = new client_logger_builder;
-    
+
     logger *logger_instance = logger_builder_instance
-        ->add_file_stream("gh_alc_test2_logs.txt", logger::severity::debug)
+        ->add_file_stream("C:\\src\\GitHub\\mp_os\\allocator\\allocator_global_heap\\tests\\gh_alc_test2_logs.txt", logger::severity::debug)
         ->build();
-    delete logger_builder_instance;
-    
-    allocator *allocator_instance = new allocator_global_heap;
-    
+
+    allocator *allocator_instance = new allocator_global_heap(logger_instance);
+
     auto first_block = reinterpret_cast<char *>(allocator_instance->allocate(sizeof(char), 11));
-    
+
     strcpy(first_block, "0123456789");
-    
+
     allocator_instance->deallocate(first_block);
     delete allocator_instance;
     delete logger_instance;
