@@ -1,0 +1,21 @@
+# ninja log v5
+1	125	7349844703261193	json-populate-prefix/src/json-populate-stamp/json-populate-mkdir	fc9c2f3e0a87aa89
+126	3648	7349844738504117	C:/src/GitHub/mp_os_ser/logger/cmake-build-debug/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-download	b7696ed3d27fdbfa
+3765	3872	7349844740749563	C:/src/GitHub/mp_os_ser/logger/cmake-build-debug/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-patch	5993ccbde4d3b55f
+4222	4339	7349844745369953	C:/src/GitHub/mp_os_ser/logger/cmake-build-debug/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-test	e625ae6d3127870c
+1	125	7349844703261193	C:/src/GitHub/mp_os_ser/logger/cmake-build-debug/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-mkdir	fc9c2f3e0a87aa89
+3649	3763	7349844739657911	C:/src/GitHub/mp_os_ser/logger/cmake-build-debug/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-update	b689f19acb7b1e27
+126	3648	7349844738504117	json-populate-prefix/src/json-populate-stamp/json-populate-download	b7696ed3d27fdbfa
+3765	3872	7349844740749563	json-populate-prefix/src/json-populate-stamp/json-populate-patch	5993ccbde4d3b55f
+3649	3763	7349844739657911	json-populate-prefix/src/json-populate-stamp/json-populate-update	b689f19acb7b1e27
+3872	3996	7349844741963151	C:/src/GitHub/mp_os_ser/logger/cmake-build-debug/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-configure	6de6b99a19152c55
+3996	4111	7349844743119546	json-populate-prefix/src/json-populate-stamp/json-populate-build	fdde70f1cb68254e
+3872	3996	7349844741963151	json-populate-prefix/src/json-populate-stamp/json-populate-configure	6de6b99a19152c55
+3996	4111	7349844743119546	C:/src/GitHub/mp_os_ser/logger/cmake-build-debug/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-build	fdde70f1cb68254e
+4112	4222	7349844744243434	json-populate-prefix/src/json-populate-stamp/json-populate-install	d7850f9cb98c5e13
+4222	4339	7349844745369953	json-populate-prefix/src/json-populate-stamp/json-populate-test	e625ae6d3127870c
+4112	4222	7349844744243434	C:/src/GitHub/mp_os_ser/logger/cmake-build-debug/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-install	d7850f9cb98c5e13
+4340	4565	7349844747603185	CMakeFiles/json-populate-complete	611e896439e3f9cc
+4340	4565	7349844747603185	json-populate-prefix/src/json-populate-stamp/json-populate-done	611e896439e3f9cc
+4340	4565	7349844747603185	C:/src/GitHub/mp_os_ser/logger/cmake-build-debug/_deps/json-subbuild/CMakeFiles/json-populate-complete	611e896439e3f9cc
+4340	4565	7349844747603185	C:/src/GitHub/mp_os_ser/logger/cmake-build-debug/_deps/json-subbuild/json-populate-prefix/src/json-populate-stamp/json-populate-done	611e896439e3f9cc

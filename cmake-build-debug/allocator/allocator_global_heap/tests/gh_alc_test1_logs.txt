@@ -1,0 +1,7 @@
+[15.05.2024] [14:18:02] [DEBUG] [DEBUG allocator_global_heap constructor called DEBUG allocator_global_heap constructor called 
+[15.05.2024] [14:18:02] [DEBUG] [DEBUG allocate called DEBUG allocate called 
+[15.05.2024] [14:18:02] [DEBUG] [DEBUG Memory allocation requested DEBUG Memory allocation requested 
+[15.05.2024] [14:18:02] [DEBUG] [DEBUG allocator_global_heap destructor called DEBUG allocator_global_heap destructor called 
+[15.05.2024] [14:18:02] [DEBUG] [DEBUG allocator_global_heap constructor called DEBUG allocator_global_heap constructor called 
+[15.05.2024] [14:18:02] [DEBUG] [DEBUG deallocate called DEBUG deallocate called 
+[15.05.2024] [14:18:02] [DEBUG] [DEBUG allocator_global_heap destructor called DEBUG allocator_global_heap destructor called 

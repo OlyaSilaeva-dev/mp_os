@@ -1,0 +1,14 @@
+# ninja log v5
+137	765	7349852900125948	logger/CMakeFiles/mp_os_lggr_lggr.dir/src/logger.cpp.obj	1ea4d647c38e4acc
+36	2876	7349853206646967	lib/libgtest.a	a2f02f578d98ef71
+42	809	7349921764913674	client_logger/tests/CMakeFiles/mp_os_lggr_clnt_lggr_tests.dir/client_logger_tests.cpp.obj	7ff4d448fae3396
+96	1463	7349852907078499	_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.obj	ad2b2a7f8c8e43a5
+44	9073	7349852982977654	_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj	f4f3c20f25ab00fe
+29	219	7349853523458404	lib/libgtest_main.a	4b44f860a1716bac
+70	559	7349853183442765	logger/CMakeFiles/mp_os_lggr_lggr.dir/src/logger_builder.cpp.obj	5149bf2da13f94d2
+99	595	7349853183815350	logger/CMakeFiles/mp_os_lggr_lggr.dir/src/logger_guardant.cpp.obj	9a007a9592d06f93
+54	233	7349853523605756	logger/libmp_os_lggr_lggr.a	12a18a49249a5ff2
+21	6206	7349922506577600	client_logger/CMakeFiles/mp_os_lggr_clnt_lggr.dir/src/client_logger_builder.cpp.obj	91630ebaa41e614e
+9	1426	7349922588044944	client_logger/CMakeFiles/mp_os_lggr_clnt_lggr.dir/src/client_logger.cpp.obj	38adfd5ad1606090
+1427	2311	7349922596939216	client_logger/libmp_os_lggr_clnt_lggr.a	c760187c8b33dfb1
+3	1150	7349925465705903	build.ninja	f321cfba0c87cbce
