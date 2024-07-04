@@ -34,3 +34,4 @@
 # cmake-build-debug directory
 cmake-build-debug/
 /.idea/
+*_logs.txt
