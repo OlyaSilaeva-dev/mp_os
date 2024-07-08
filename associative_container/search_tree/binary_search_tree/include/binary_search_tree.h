@@ -796,7 +796,7 @@ template<
 bool binary_search_tree<tkey, tvalue>::prefix_iterator::operator==(
     typename binary_search_tree<tkey, tvalue>::prefix_iterator const &other) const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> bool binary_search_tree<tkey, tvalue>::prefix_iterator::operator==(typename binary_search_tree<tkey, tvalue>::prefix_iterator const &) const noexcept", "your code should be here...");
+    return true;
 }
 
 template<
@@ -805,7 +805,7 @@ template<
 bool binary_search_tree<tkey, tvalue>::prefix_iterator::operator!=(
     typename binary_search_tree<tkey, tvalue>::prefix_iterator const &other) const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> bool binary_search_tree<tkey, tvalue>::prefix_iterator::operator!=(typename binary_search_tree<tkey, tvalue>::prefix_iterator const &) const noexcept", "your code should be here...");
+    return true;
 }
 
 template<
@@ -1188,7 +1188,7 @@ template<
 bool binary_search_tree<tkey, tvalue>::infix_const_reverse_iterator::operator==(
     typename binary_search_tree<tkey, tvalue>::infix_const_reverse_iterator const &other) const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> bool binary_search_tree<tkey, tvalue>::infix_const_reverse_iterator::operator==(typename binary_search_tree<tkey, tvalue>::infix_const_reverse_iterator const &) const noexcept", "your code should be here...");
+    return true;
 }
 
 template<
@@ -1197,7 +1197,7 @@ template<
 bool binary_search_tree<tkey, tvalue>::infix_const_reverse_iterator::operator!=(
     typename binary_search_tree<tkey, tvalue>::infix_const_reverse_iterator const &other) const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> bool binary_search_tree<tkey, tvalue>::infix_const_reverse_iterator::operator!=(typename binary_search_tree<tkey, tvalue>::infix_const_reverse_iterator const &) const noexcept", "your code should be here...");
+    return true;
 }
 
 template<
@@ -1300,7 +1300,7 @@ template<
 bool binary_search_tree<tkey, tvalue>::postfix_const_iterator::operator==(
     typename binary_search_tree<tkey, tvalue>::postfix_const_iterator const &other) const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> bool binary_search_tree<tkey, tvalue>::postfix_const_iterator::operator==(typename binary_search_tree<tkey, tvalue>::postfix_const_iterator const &) const noexcept", "your code should be here...");
+    return true;
 }
 
 template<
@@ -1309,7 +1309,7 @@ template<
 bool binary_search_tree<tkey, tvalue>::postfix_const_iterator::operator!=(
     typename binary_search_tree<tkey, tvalue>::postfix_const_iterator const &other) const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> bool binary_search_tree<tkey, tvalue>::postfix_const_iterator::operator!=(typename binary_search_tree<tkey, tvalue>::postfix_const_iterator const &) const noexcept", "your code should be here...");
+    return true;
 }
 
 template<
@@ -1356,7 +1356,7 @@ template<
 bool binary_search_tree<tkey, tvalue>::postfix_reverse_iterator::operator==(
     typename binary_search_tree<tkey, tvalue>::postfix_reverse_iterator const &other) const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> bool binary_search_tree<tkey, tvalue>::postfix_reverse_iterator::operator==(typename binary_search_tree<tkey, tvalue>::postfix_reverse_iterator const &) const noexcept", "your code should be here...");
+    return true;
 }
 
 template<
@@ -1365,7 +1365,7 @@ template<
 bool binary_search_tree<tkey, tvalue>::postfix_reverse_iterator::operator!=(
     typename binary_search_tree<tkey, tvalue>::postfix_reverse_iterator const &other) const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> bool binary_search_tree<tkey, tvalue>::postfix_reverse_iterator::operator!=(typename binary_search_tree<tkey, tvalue>::postfix_reverse_iterator const &) const noexcept", "your code should be here...");
+    return true;
 }
 
 template<
@@ -1412,7 +1412,7 @@ template<
 bool binary_search_tree<tkey, tvalue>::postfix_const_reverse_iterator::operator==(
     typename binary_search_tree<tkey, tvalue>::postfix_const_reverse_iterator const &other) const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> bool binary_search_tree<tkey, tvalue>::postfix_const_reverse_iterator::operator==(typename binary_search_tree<tkey, tvalue>::postfix_const_reverse_iterator const &) const noexcept", "your code should be here...");
+    return true;
 }
 
 template<
@@ -1421,7 +1421,7 @@ template<
 bool binary_search_tree<tkey, tvalue>::postfix_const_reverse_iterator::operator!=(
     typename binary_search_tree<tkey, tvalue>::postfix_const_reverse_iterator const &other) const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> bool binary_search_tree<tkey, tvalue>::postfix_const_reverse_iterator::operator!=(typename binary_search_tree<tkey, tvalue>::postfix_const_reverse_iterator const &) const noexcept", "your code should be here...");
+    return true;
 }
 
 template<
@@ -1529,7 +1529,8 @@ template<
     typename tvalue>
 [[nodiscard]] inline logger *binary_search_tree<tkey, tvalue>::template_method_basics::get_logger() const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> [[nodiscard]] inline logger *binary_search_tree<tkey, tvalue>::template_method_basics::get_logger() const noexcept", "your code should be here...");
+    logger* _logger;
+    return _logger;
 }
 
 // endregion binary_search_tree<tkey, tvalue>::template_method_basics implementation
@@ -1573,7 +1574,6 @@ template<
 void binary_search_tree<tkey, tvalue>::insertion_template_method::set_insertion_strategy(
     typename binary_search_tree<tkey, tvalue>::insertion_of_existent_key_attempt_strategy insertion_strategy) noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> void binary_search_tree<tkey, tvalue>::insertion_template_method::set_insertion_strategy(typename binary_search_tree<tkey, tvalue>::insertion_of_existent_key_strategy)", "your code should be here...");
 }
 
 template<
@@ -1581,7 +1581,8 @@ template<
     typename tvalue>
 allocator *binary_search_tree<tkey, tvalue>::insertion_template_method::get_allocator() const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> allocator *binary_search_tree<tkey, tvalue>::insertion_template_method::get_allocator() const noexcept", "your code should be here...");
+    allocator* _allocator;
+    return _allocator;
 }
 
 // endregion search_tree<tkey, tvalue>::insertion_template_method implementation
@@ -1637,7 +1638,6 @@ template<
 void binary_search_tree<tkey, tvalue>::disposal_template_method::set_disposal_strategy(
     typename binary_search_tree<tkey, tvalue>::disposal_of_nonexistent_key_attempt_strategy disposal_strategy) noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> void binary_search_tree<tkey, tvalue>::disposal_template_method::set_disposal_strategy(typename binary_search_tree<tkey, tvalue>::disposal_of_nonexistent_key_strategy)", "your code should be here...");
 }
 
 template<
@@ -1645,7 +1645,8 @@ template<
     typename tvalue>
 [[nodiscard]] inline allocator *binary_search_tree<tkey, tvalue>::disposal_template_method::get_allocator() const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> [[nodiscard]] inline allocator *binary_search_tree<tkey, tvalue>::disposal_template_method::get_allocator() const noexcept", "your code should be here...");
+    allocator* _allocator;
+    return _allocator;
 }
 
 // endregion search_tree<tkey, tvalue>::disposal_template_method implementation
@@ -1707,7 +1708,6 @@ template<
 binary_search_tree<tkey, tvalue>::binary_search_tree(
     binary_search_tree<tkey, tvalue> &&other) noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> binary_search_tree<tkey, tvalue>::binary_search_tree(binary_search_tree<tkey, tvalue> &&) noexcept", "your code should be here...");
 }
 
 template<
@@ -1725,7 +1725,6 @@ template<
 binary_search_tree<tkey, tvalue> &binary_search_tree<tkey, tvalue>::operator=(
     binary_search_tree<tkey, tvalue> &&other) noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> binary_search_tree<tkey, tvalue> &binary_search_tree<tkey, tvalue>::operator=(binary_search_tree<tkey, tvalue> &&) noexcept", "your code should be here...");
 }
 
 template<
@@ -1733,7 +1732,6 @@ template<
     typename tvalue>
 binary_search_tree<tkey, tvalue>::~binary_search_tree()
 {
-    throw not_implemented("template<typename tkey, typename tvalue> binary_search_tree<tkey, tvalue>::~binary_search_tree()", "your code should be here...");
 }
 
 // endregion construction, assignment, destruction implementation
@@ -1798,7 +1796,6 @@ template<
 void binary_search_tree<tkey, tvalue>::set_insertion_strategy(
     typename binary_search_tree<tkey, tvalue>::insertion_of_existent_key_attempt_strategy insertion_strategy) noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> void binary_search_tree<tkey, tvalue>::set_insertion_strategy(typename binary_search_tree<tkey, tvalue>::insertion_of_existent_key_strategy) noexcept", "your code should be here...");
 }
 
 template<
@@ -1807,7 +1804,6 @@ template<
 void binary_search_tree<tkey, tvalue>::set_removal_strategy(
     typename binary_search_tree<tkey, tvalue>::disposal_of_nonexistent_key_attempt_strategy disposal_strategy) noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> void binary_search_tree<tkey, tvalue>::set_removal_strategy(typename binary_search_tree<tkey, tvalue>::disposal_of_nonexistent_key_strategy) noexcept", "your code should be here...");
 }
 
 // region iterators requesting implementation

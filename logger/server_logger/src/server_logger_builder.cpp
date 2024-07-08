@@ -1,6 +1,6 @@
 #include <not_implemented.h>
 
-#include "../include/server_logger_builder.h"
+#include "server_logger_builder.h"
 
 server_logger_builder::server_logger_builder()
 {
@@ -22,18 +22,16 @@ server_logger_builder &server_logger_builder::operator=(
 server_logger_builder::server_logger_builder(
     server_logger_builder &&other) noexcept
 {
-    throw not_implemented("server_logger_builder::server_logger_builder(server_logger_builder &&other) noexcept", "your code should be here...");
 }
 
 server_logger_builder &server_logger_builder::operator=(
     server_logger_builder &&other) noexcept
 {
-    throw not_implemented("server_logger_builder &server_logger_builder::operator=(server_logger_builder &&other) noexcept", "your code should be here...");
+    return *this;
 }
 
 server_logger_builder::~server_logger_builder() noexcept
 {
-    throw not_implemented("server_logger_builder::~server_logger_builder() noexcept", "your code should be here...");
 }
 
 logger_builder *server_logger_builder::add_file_stream(

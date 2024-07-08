@@ -154,7 +154,6 @@ template<
     typename tvalue>
 splay_tree<tkey, tvalue>::~splay_tree() noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> splay_tree<tkey, tvalue>::~splay_tree() noexcept", "your code should be here...");
 }
 
 template<
@@ -181,7 +180,6 @@ template<
 splay_tree<tkey, tvalue>::splay_tree(
     splay_tree<tkey, tvalue> &&other) noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> splay_tree<tkey, tvalue>::splay_tree(splay_tree<tkey, tvalue> &&) noexcept", "your code should be here...");
 }
 
 template<

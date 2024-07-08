@@ -1,6 +1,6 @@
 #include <not_implemented.h>
 
-#include "../include/server_logger.h"
+#include "server_logger.h"
 
 server_logger::server_logger(
     server_logger const &other)

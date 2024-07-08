@@ -1,4 +1,4 @@
-#include "../include/logger.h"
+#include "logger.h"
 #include <iomanip>
 
 logger const *logger::trace(

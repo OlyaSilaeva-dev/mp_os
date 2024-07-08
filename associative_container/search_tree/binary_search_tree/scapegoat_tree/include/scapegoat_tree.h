@@ -163,7 +163,6 @@ template<
     typename tvalue>
 scapegoat_tree<tkey, tvalue>::~scapegoat_tree() noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> scapegoat_tree<tkey, tvalue>::~scapegoat_tree() noexcept", "your code should be here...");
 }
 
 template<
@@ -190,7 +189,6 @@ template<
 scapegoat_tree<tkey, tvalue>::scapegoat_tree(
     scapegoat_tree<tkey, tvalue> &&other) noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> scapegoat_tree<tkey, tvalue>::scapegoat_tree(scapegoat_tree<tkey, tvalue> &&) noexcept", "your code should be here...");
 }
 
 template<
@@ -199,7 +197,6 @@ template<
 scapegoat_tree<tkey, tvalue> &scapegoat_tree<tkey, tvalue>::operator=(
     scapegoat_tree<tkey, tvalue> &&other) noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> scapegoat_tree<tkey, tvalue> &scapegoat_tree<tkey, tvalue>::operator=(scapegoat_tree<tkey, tvalue> &&) noexcept", "your code should be here...");
 }
 
 template<

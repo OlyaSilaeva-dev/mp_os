@@ -171,7 +171,6 @@ template<
     typename tvalue>
 AVL_tree<tkey, tvalue>::~AVL_tree() noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> AVL_tree<tkey, tvalue>::~AVL_tree() noexcept", "your code should be here...");
 }
 
 template<
@@ -198,7 +197,6 @@ template<
 AVL_tree<tkey, tvalue>::AVL_tree(
     AVL_tree<tkey, tvalue> &&other) noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> AVL_tree<tkey, tvalue>::AVL_tree(AVL_tree<tkey, tvalue> &&) noexcept", "your code should be here...");
 }
 
 template<
@@ -207,7 +205,6 @@ template<
 AVL_tree<tkey, tvalue> &AVL_tree<tkey, tvalue>::operator=(
     AVL_tree<tkey, tvalue> &&other) noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> AVL_tree<tkey, tvalue> &AVL_tree<tkey, tvalue>::operator=(AVL_tree<tkey, tvalue> &&) noexcept", "your code should be here...");
 }
 
 #endif //MATH_PRACTICE_AND_OPERATING_SYSTEMS_AVL_TREE_H

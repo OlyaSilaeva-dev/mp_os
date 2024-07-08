@@ -1,6 +1,6 @@
 #include <not_implemented.h>
 
-#include "../include/allocator_global_heap.h"
+#include "allocator_global_heap.h"
 
 allocator_global_heap::allocator_global_heap(
     logger *logger) : _logger(logger)
