@@ -1,2 +1,0 @@
-[03.06.2024] [18:58:26] [TRACE] binarySearchTreePositiveTests.test1 started 
-[03.06.2024] [18:58:26] [TRACE] binarySearchTreePositiveTests.test1 finished 
