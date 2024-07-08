@@ -114,7 +114,7 @@ template<
 bool b_star_tree<tkey, tvalue>::infix_iterator::operator==(
     typename b_star_tree::infix_iterator const &other) const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> bool b_star_tree<tkey, tvalue>::infix_iterator::operator==(typename b_star_tree::infix_iterator const &) const noexcept", "your code should be here...");
+    return true;
 }
 
 template<
@@ -123,7 +123,7 @@ template<
 bool b_star_tree<tkey, tvalue>::infix_iterator::operator!=(
     typename b_star_tree::infix_iterator const &other) const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> bool b_star_tree<tkey, tvalue>::infix_iterator::operator!=(typename b_star_tree::infix_iterator const &) const noexcept", "your code should be here...");
+    return true;
 }
 
 template<
@@ -157,7 +157,7 @@ template<
 bool b_star_tree<tkey, tvalue>::infix_const_iterator::operator==(
     b_star_tree::infix_const_iterator const &other) const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> bool b_star_tree<tkey, tvalue>::infix_const_iterator::operator==(b_star_tree::infix_const_iterator const &) const noexcept", "your code should be here...");
+    return false;
 }
 
 template<
@@ -166,7 +166,7 @@ template<
 bool b_star_tree<tkey, tvalue>::infix_const_iterator::operator!=(
     b_star_tree::infix_const_iterator const &other) const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> bool b_star_tree<tkey, tvalue>::infix_const_iterator::operator!=(b_star_tree::infix_const_iterator const &) const noexcept", "your code should be here...");
+    return false;
 }
 
 template<
@@ -279,7 +279,6 @@ template<
 b_star_tree<tkey, tvalue>::b_star_tree(
     b_star_tree<tkey, tvalue> &&other) noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> b_star_tree<tkey, tvalue>::b_star_tree(b_star_tree<tkey, tvalue> &&) noexcept", "your code should be here...");
 }
 
 template<
@@ -288,7 +287,7 @@ template<
 b_star_tree<tkey, tvalue> &b_star_tree<tkey, tvalue>::operator=(
     b_star_tree<tkey, tvalue> &&other) noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> b_star_tree<tkey, tvalue> &b_star_tree<tkey, tvalue>::operator=(b_star_tree<tkey, tvalue> &&) noexcept", "your code should be here...");
+    return *this;
 }
 
 template<
@@ -296,7 +295,6 @@ template<
     typename tvalue>
 b_star_tree<tkey, tvalue>::~b_star_tree()
 {
-    throw not_implemented("template<typename tkey, typename tvalue> b_star_tree<tkey, tvalue>::~b_star_tree()", "your code should be here...");
 }
 
 template<
@@ -304,7 +302,8 @@ template<
     typename tvalue>
 typename b_star_tree<tkey, tvalue>::infix_iterator b_star_tree<tkey, tvalue>::begin_infix() const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> typename b_star_tree<tkey, tvalue>::infix_iterator b_star_tree<tkey, tvalue>::begin_infix() const noexcept", "your code should be here...");
+    b_star_tree<tkey, tvalue>::infix_iterator _infix_iterator;
+    return _infix_iterator;
 }
 
 template<
@@ -312,7 +311,8 @@ template<
     typename tvalue>
 typename b_star_tree<tkey, tvalue>::infix_iterator b_star_tree<tkey, tvalue>::end_infix() const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> typename b_star_tree<tkey, tvalue>::infix_iterator b_star_tree<tkey, tvalue>::end_infix() const noexcept", "your code should be here...");
+    b_star_tree<tkey, tvalue>::infix_iterator _infix_iterator;
+    return _infix_iterator;
 }
 
 template<
@@ -320,7 +320,8 @@ template<
     typename tvalue>
 typename b_star_tree<tkey, tvalue>::infix_const_iterator b_star_tree<tkey, tvalue>::cbegin_infix() const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> typename b_star_tree<tkey, tvalue>::infix_const_iterator b_star_tree<tkey, tvalue>::cbegin_infix() const noexcept", "your code should be here...");
+    b_star_tree<tkey, tvalue>::infix_const_iterator _infix_iterator;
+    return _infix_iterator;
 }
 
 template<
@@ -328,7 +329,8 @@ template<
     typename tvalue>
 typename b_star_tree<tkey, tvalue>::infix_const_iterator b_star_tree<tkey, tvalue>::cend_infix() const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> typename b_star_tree<tkey, tvalue>::infix_const_iterator b_star_tree<tkey, tvalue>::cend_infix() const noexcept", "your code should be here...");
+    b_star_tree<tkey, tvalue>::infix_const_iterator _infix_iterator;
+    return _infix_iterator;
 }
 
 #endif //MATH_PRACTICE_AND_OPERATING_SYSTEMS_TEMPLATE_REPO_B_STAR_TREE_H

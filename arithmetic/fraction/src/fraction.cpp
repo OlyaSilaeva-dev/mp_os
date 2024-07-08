@@ -1,4 +1,4 @@
-#include "../include/fraction.h"
+#include "fraction.h"
 
 fraction::fraction(
     big_integer &&numerator,
@@ -11,7 +11,6 @@ fraction::fraction(
 
 fraction::~fraction()
 {
-    throw not_implemented("fraction::~fraction()", "your code should be here...");
 }
 
 fraction::fraction(
@@ -33,13 +32,12 @@ fraction::fraction(
         _numerator(std::move(other._numerator)),
         _denominator(std::move(other._denominator))
 {
-    throw not_implemented("fraction::fraction(fraction &&) noexcept", "your code should be here...");
 }
 
 fraction &fraction::operator=(
     fraction &&other) noexcept
 {
-    throw not_implemented("fraction &fraction::operator=(fraction &&) noexcept", "your code should be here...");
+    return *this;
 }
 
 fraction &fraction::operator+=(

@@ -1,8 +1,6 @@
 #include <gtest/gtest.h>
-#include "../include/client_logger.h"
-#include "../include/logger.h"
+#include "client_logger.h"
 #include <iostream>
-#include <fstream>
 
 TEST(client_logger, test_console_streams)
 {

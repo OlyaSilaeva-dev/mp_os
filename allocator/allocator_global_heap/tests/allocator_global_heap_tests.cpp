@@ -1,9 +1,7 @@
 #include <gtest/gtest.h>
 #include <iostream>
-#include <allocator_global_heap.h>
-#include <client_logger_builder.h>
-#include <logger.h>
-#include <logger_builder.h>
+#include "allocator_global_heap.h"
+#include "client_logger_builder.h"
 
 TEST(allocatorGlobalHeapTests, test1)
 {

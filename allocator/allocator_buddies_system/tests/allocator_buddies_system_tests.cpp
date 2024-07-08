@@ -3,8 +3,6 @@
 #include <allocator.h>
 #include <allocator_buddies_system.h>
 #include <client_logger_builder.h>
-#include <logger.h>
-#include <logger_builder.h>
 
 logger *create_logger(
     std::vector<std::pair<std::string, logger::severity>> const &output_file_streams_setup,

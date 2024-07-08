@@ -1,10 +1,9 @@
 #include <not_implemented.h>
 
-#include "../include/allocator_boundary_tags.h"
+#include "allocator_boundary_tags.h"
 
 allocator_boundary_tags::~allocator_boundary_tags()
 {
-    throw not_implemented("allocator_boundary_tags::~allocator_boundary_tags()", "your code should be here...");
 }
 
 allocator_boundary_tags::allocator_boundary_tags(
@@ -22,13 +21,12 @@ allocator_boundary_tags &allocator_boundary_tags::operator=(
 allocator_boundary_tags::allocator_boundary_tags(
     allocator_boundary_tags &&other) noexcept
 {
-    throw not_implemented("allocator_boundary_tags::allocator_boundary_tags(allocator_boundary_tags &&) noexcept", "your code should be here...");
 }
 
 allocator_boundary_tags &allocator_boundary_tags::operator=(
     allocator_boundary_tags &&other) noexcept
 {
-    throw not_implemented("allocator_boundary_tags &allocator_boundary_tags::operator=(allocator_boundary_tags &&) noexcept", "your code should be here...");
+    return *this;
 }
 
 allocator_boundary_tags::allocator_boundary_tags(
@@ -66,7 +64,8 @@ inline allocator *allocator_boundary_tags::get_allocator() const
 
 std::vector<allocator_test_utils::block_info> allocator_boundary_tags::get_blocks_info() const noexcept
 {
-    throw not_implemented("std::vector<allocator_test_utils::block_info> allocator_boundary_tags::get_blocks_info() const noexcept", "your code should be here...");
+    std::vector<allocator_test_utils::block_info> blocks;
+    return blocks;
 }
 
 inline logger *allocator_boundary_tags::get_logger() const
@@ -76,5 +75,6 @@ inline logger *allocator_boundary_tags::get_logger() const
 
 inline std::string allocator_boundary_tags::get_typename() const noexcept
 {
-    throw not_implemented("inline std::string allocator_boundary_tags::get_typename() const noexcept", "your code should be here...");
+    std::string val;
+    return val;
 }

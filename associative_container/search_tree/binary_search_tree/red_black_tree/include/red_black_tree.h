@@ -180,7 +180,6 @@ template<
     typename tvalue>
 red_black_tree<tkey, tvalue>::~red_black_tree() noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> red_black_tree<tkey, tvalue>::~red_black_tree() noexcept", "your code should be here...");
 }
 
 template<
@@ -207,7 +206,6 @@ template<
 red_black_tree<tkey, tvalue>::red_black_tree(
     red_black_tree<tkey, tvalue> &&other) noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> red_black_tree<tkey, tvalue>::red_black_tree(red_black_tree<tkey, tvalue> &&) noexcept", "your code should be here...");
 }
 
 template<
@@ -216,7 +214,6 @@ template<
 red_black_tree<tkey, tvalue> &red_black_tree<tkey, tvalue>::operator=(
     red_black_tree<tkey, tvalue> &&other) noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> red_black_tree<tkey, tvalue> &red_black_tree<tkey, tvalue>::operator=(red_black_tree<tkey, tvalue> &&) noexcept", "your code should be here...");
 }
 
 #endif //MATH_PRACTICE_AND_OPERATING_SYSTEMS_RED_BLACK_TREE_H

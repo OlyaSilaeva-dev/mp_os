@@ -1,10 +1,9 @@
 #include <not_implemented.h>
 
-#include "../include/allocator_red_black_tree.h"
+#include "allocator_red_black_tree.h"
 
 allocator_red_black_tree::~allocator_red_black_tree()
 {
-    throw not_implemented("allocator_red_black_tree::~allocator_red_black_tree()", "your code should be here...");
 }
 
 allocator_red_black_tree::allocator_red_black_tree(
@@ -22,13 +21,12 @@ allocator_red_black_tree &allocator_red_black_tree::operator=(
 allocator_red_black_tree::allocator_red_black_tree(
     allocator_red_black_tree &&other) noexcept
 {
-    throw not_implemented("allocator_red_black_tree::allocator_red_black_tree(allocator_red_black_tree &&) noexcept", "your code should be here...");
 }
 
 allocator_red_black_tree &allocator_red_black_tree::operator=(
     allocator_red_black_tree &&other) noexcept
 {
-    throw not_implemented("allocator_red_black_tree &allocator_red_black_tree::operator=(allocator_red_black_tree &&) noexcept", "your code should be here...");
+    return *this;
 }
 
 allocator_red_black_tree::allocator_red_black_tree(
@@ -66,7 +64,8 @@ inline allocator *allocator_red_black_tree::get_allocator() const
 
 std::vector<allocator_test_utils::block_info> allocator_red_black_tree::get_blocks_info() const noexcept
 {
-    throw not_implemented("std::vector<allocator_test_utils::block_info> allocator_red_black_tree::get_blocks_info() const noexcept", "your code should be here...");
+    std::vector<allocator_test_utils::block_info> blocks;
+    return blocks;
 }
 
 inline logger *allocator_red_black_tree::get_logger() const
@@ -76,5 +75,6 @@ inline logger *allocator_red_black_tree::get_logger() const
 
 inline std::string allocator_red_black_tree::get_typename() const noexcept
 {
-    throw not_implemented("inline std::string allocator_red_black_tree::get_typename() const noexcept", "your code should be here...");
+    std::string type;
+    return type;
 }

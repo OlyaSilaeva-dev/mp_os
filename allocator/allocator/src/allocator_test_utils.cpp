@@ -1,4 +1,4 @@
-#include "../include/allocator_test_utils.h"
+#include "allocator_test_utils.h"
 
 bool allocator_test_utils::block_info::operator==(
     allocator_test_utils::block_info const &other) const noexcept

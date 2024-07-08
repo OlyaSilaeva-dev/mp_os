@@ -1,10 +1,9 @@
 #include <not_implemented.h>
 
-#include "../include/allocator_buddies_system.h"
+#include "allocator_buddies_system.h"
 
 allocator_buddies_system::~allocator_buddies_system()
 {
-    throw not_implemented("allocator_buddies_system::~allocator_buddies_system()", "your code should be here...");
 }
 
 allocator_buddies_system::allocator_buddies_system(
@@ -22,13 +21,12 @@ allocator_buddies_system &allocator_buddies_system::operator=(
 allocator_buddies_system::allocator_buddies_system(
     allocator_buddies_system &&other) noexcept
 {
-    throw not_implemented("allocator_buddies_system::allocator_buddies_system(allocator_buddies_system &&) noexcept", "your code should be here...");
 }
 
 allocator_buddies_system &allocator_buddies_system::operator=(
     allocator_buddies_system &&other) noexcept
 {
-    throw not_implemented("allocator_buddies_system &allocator_buddies_system::operator=(allocator_buddies_system &&) noexcept", "your code should be here...");
+    return *this;
 }
 
 allocator_buddies_system::allocator_buddies_system(
@@ -66,7 +64,8 @@ inline allocator *allocator_buddies_system::get_allocator() const
 
 std::vector<allocator_test_utils::block_info> allocator_buddies_system::get_blocks_info() const noexcept
 {
-    throw not_implemented("std::vector<allocator_test_utils::block_info> allocator_buddies_system::get_blocks_info() const noexcept", "your code should be here...");
+    std::vector<allocator_test_utils::block_info> blocks;
+    return blocks;
 }
 
 inline logger *allocator_buddies_system::get_logger() const
@@ -76,5 +75,6 @@ inline logger *allocator_buddies_system::get_logger() const
 
 inline std::string allocator_buddies_system::get_typename() const noexcept
 {
-    throw not_implemented("inline std::string allocator_buddies_system::get_typename() const noexcept", "your code should be here...");
+    std::string type;
+    return type;
 }

@@ -123,7 +123,6 @@ template<
 bool b_plus_tree<tkey, tvalue>::infix_iterator::operator!=(
     typename b_plus_tree::infix_iterator const &other) const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> bool b_plus_tree<tkey, tvalue>::infix_iterator::operator!=(typename b_plus_tree::infix_iterator const &) const noexcept", "your code should be here...");
 }
 
 template<
@@ -157,7 +156,7 @@ template<
 bool b_plus_tree<tkey, tvalue>::infix_const_iterator::operator==(
     b_plus_tree::infix_const_iterator const &other) const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> bool b_plus_tree<tkey, tvalue>::infix_const_iterator::operator==(b_plus_tree::infix_const_iterator const &) const noexcept", "your code should be here...");
+    return true;
 }
 
 template<
@@ -166,7 +165,7 @@ template<
 bool b_plus_tree<tkey, tvalue>::infix_const_iterator::operator!=(
     b_plus_tree::infix_const_iterator const &other) const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> bool b_plus_tree<tkey, tvalue>::infix_const_iterator::operator!=(b_plus_tree::infix_const_iterator const &) const noexcept", "your code should be here...");
+    return true;
 }
 
 template<
@@ -279,7 +278,6 @@ template<
 b_plus_tree<tkey, tvalue>::b_plus_tree(
     b_plus_tree<tkey, tvalue> &&other) noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> b_plus_tree<tkey, tvalue>::b_plus_tree(b_plus_tree<tkey, tvalue> &&) noexcept", "your code should be here...");
 }
 
 template<
@@ -288,7 +286,7 @@ template<
 b_plus_tree<tkey, tvalue> &b_plus_tree<tkey, tvalue>::operator=(
     b_plus_tree<tkey, tvalue> &&other) noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> b_plus_tree<tkey, tvalue> &b_plus_tree<tkey, tvalue>::operator=(b_plus_tree<tkey, tvalue> &&) noexcept", "your code should be here...");
+    return *this;
 }
 
 template<
@@ -296,7 +294,6 @@ template<
     typename tvalue>
 b_plus_tree<tkey, tvalue>::~b_plus_tree()
 {
-    throw not_implemented("template<typename tkey, typename tvalue> b_plus_tree<tkey, tvalue>::~b_plus_tree()", "your code should be here...");
 }
 
 template<
@@ -304,7 +301,8 @@ template<
     typename tvalue>
 typename b_plus_tree<tkey, tvalue>::infix_iterator b_plus_tree<tkey, tvalue>::begin_infix() const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> typename b_plus_tree<tkey, tvalue>::infix_iterator b_plus_tree<tkey, tvalue>::begin_infix() const noexcept", "your code should be here...");
+    b_plus_tree<tkey, tvalue>::infix_iterator _infix_iterator;
+    return _infix_iterator;
 }
 
 template<
@@ -312,7 +310,8 @@ template<
     typename tvalue>
 typename b_plus_tree<tkey, tvalue>::infix_iterator b_plus_tree<tkey, tvalue>::end_infix() const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> typename b_plus_tree<tkey, tvalue>::infix_iterator b_plus_tree<tkey, tvalue>::end_infix() const noexcept", "your code should be here...");
+    b_plus_tree<tkey, tvalue>::infix_iterator _infix_iterator;
+    return _infix_iterator;
 }
 
 template<
@@ -320,7 +319,9 @@ template<
     typename tvalue>
 typename b_plus_tree<tkey, tvalue>::infix_const_iterator b_plus_tree<tkey, tvalue>::cbegin_infix() const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> typename b_plus_tree<tkey, tvalue>::infix_const_iterator b_plus_tree<tkey, tvalue>::cbegin_infix() const noexcept", "your code should be here...");
+
+    b_plus_tree<tkey, tvalue>::infix_const_iterator _infix_iterator;
+    return _infix_iterator;
 }
 
 template<
@@ -328,7 +329,8 @@ template<
     typename tvalue>
 typename b_plus_tree<tkey, tvalue>::infix_const_iterator b_plus_tree<tkey, tvalue>::cend_infix() const noexcept
 {
-    throw not_implemented("template<typename tkey, typename tvalue> typename b_plus_tree<tkey, tvalue>::infix_const_iterator b_plus_tree<tkey, tvalue>::cend_infix() const noexcept", "your code should be here...");
+    b_plus_tree<tkey, tvalue>::infix_const_iterator _infix_iterator;
+    return _infix_iterator;
 }
 
 #endif //MATH_PRACTICE_AND_OPERATING_SYSTEMS_TEMPLATE_REPO_B_PLUS_TREE_H

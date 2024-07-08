@@ -1,4 +1,4 @@
-#include "../include/continued_fraction.h"
+#include "continued_fraction.h"
 
 #include <not_implemented.h>
 

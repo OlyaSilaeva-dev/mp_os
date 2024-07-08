@@ -1,4 +1,4 @@
-#include "../include/big_integer.h"
+#include "big_integer.h"
 
 big_integer &big_integer::trivial_multiplication::multiply(
     big_integer &first_multiplier,
@@ -94,7 +94,6 @@ big_integer::big_integer(
 
 big_integer::~big_integer()
 {
-    throw not_implemented("big_integer::~big_integer()", "your code should be here...");
 }
 
 big_integer::big_integer(
@@ -112,13 +111,12 @@ big_integer &big_integer::operator=(
 big_integer::big_integer(
     big_integer &&other) noexcept
 {
-    throw not_implemented("big_integer::big_integer(big_integer &&other) noexcept", "your code should be here...");
 }
 
 big_integer &big_integer::operator=(
     big_integer &&other) noexcept
 {
-    throw not_implemented("big_integer &big_integer::operator=(big_integer &&) noexcept", "your code should be here...");
+    return *this;
 }
 
 bool big_integer::operator==(
@@ -421,5 +419,5 @@ std::istream &operator>>(
 
 [[nodiscard]] allocator *big_integer::get_allocator() const noexcept
 {
-    throw not_implemented("allocator *big_integer::get_allocator() const noexcept", "your code should be here...");
+    return this->_allocator;
 }
