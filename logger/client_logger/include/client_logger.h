@@ -6,14 +6,15 @@
 #include <map>
 #include <set>
 #include <unordered_map>
+#include <memory>
 
 class client_logger final:
     public logger
 {
 private:
-    std::map<std::string, std::pair<std::ofstream*, std::set<logger::severity>>> _streams;
+    std::map<std::string, std::pair<std::shared_ptr<std::ofstream>, std::set<logger::severity>>> _streams;
 
-    static std::unordered_map<std::string, std::pair<std::ofstream*, size_t>> _all_streams;
+    static std::unordered_map<std::string, std::pair<std::shared_ptr<std::ofstream>, size_t>> _all_streams;
 
     std::string _format_string;
 
@@ -21,6 +22,8 @@ private:
 public:
 
     client_logger() = default;
+
+    client_logger(const client_logger &other);
 
     client_logger(
             const client_logger &other, const std::string &format_string);

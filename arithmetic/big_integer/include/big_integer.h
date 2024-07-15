@@ -12,6 +12,7 @@
 class big_integer final:
     allocator_guardant
 {
+private:
 
 public:
     
@@ -165,7 +166,7 @@ private:
 
     int _oldest_digit;
     unsigned int *_other_digits;
-    allocator *_allocator;
+    allocator* _allocator;
 
 public:
 

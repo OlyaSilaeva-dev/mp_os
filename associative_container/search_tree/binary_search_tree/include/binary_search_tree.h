@@ -102,20 +102,12 @@ public:
 
         inline tkey const &get_key() const noexcept
         {
-            if (is_state_initialized()) return *_key;
-            else
-            {
-                throw std::logic_error("can't get key");
-            }
+            return *_key;
         }
 
         inline tvalue const &get_value() const noexcept
         {
-            if (is_state_initialized()) return *_value;
-            else
-            {
-                throw std::logic_error("can't get key");
-            }
+            return *_value;
         }
 
         inline bool is_state_initialized() const noexcept
@@ -3273,6 +3265,7 @@ typename binary_search_tree<tkey, tvalue>::prefix_const_iterator &binary_search_
             }
         } while (true);
     }
+    return *this;
 }
 
 template<
@@ -3580,6 +3573,7 @@ typename binary_search_tree<tkey, tvalue>::infix_iterator &binary_search_tree<tk
         }
         while (true);
     }
+    return *this;
 }
 
 template<
@@ -3676,6 +3670,7 @@ typename binary_search_tree<tkey, tvalue>::infix_const_iterator &binary_search_t
         }
         while (true);
     }
+    return *this;
 }
 
 template<
