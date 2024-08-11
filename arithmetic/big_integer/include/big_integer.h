@@ -15,7 +15,7 @@ class big_integer final:
 private:
 
 public:
-    
+
     enum class multiplication_rule
     {
         trivial,
@@ -24,60 +24,60 @@ public:
     };
 
 private:
-    
+
     class multiplication
     {
-    
+
     public:
-        
+
         virtual ~multiplication() noexcept = default;
-    
+
     public:
-        
+
         virtual big_integer &multiply(
             big_integer &first_multiplier,
             big_integer const &second_multiplier) const = 0;
-        
+
     };
-    
+
     class trivial_multiplication final:
         public multiplication
     {
-    
+
     public:
-        
+
         big_integer &multiply(
             big_integer &first_multiplier,
             big_integer const &second_multiplier) const override;
-        
+
     };
-    
+
     class Karatsuba_multiplication final:
         public multiplication
     {
 
     public:
-        
+
         big_integer &multiply(
             big_integer &first_multiplier,
             big_integer const &second_multiplier) const override;
-        
+
     };
-    
+
     class Schonhage_Strassen_multiplication final:
         public multiplication
     {
 
     public:
-        
+
         big_integer &multiply(
             big_integer &first_multiplier,
             big_integer const &second_multiplier) const override;
-        
+
     };
 
 public:
-    
+
     enum class division_rule
     {
         trivial,
@@ -86,87 +86,136 @@ public:
     };
 
 private:
-    
+
     class division
     {
-    
+
     public:
-        
+
         virtual ~division() noexcept = default;
-    
+
     public:
-        
+
         virtual big_integer &divide(
             big_integer &dividend,
             big_integer const &divisor,
             big_integer::multiplication_rule multiplication_rule) const = 0;
-        
+
         virtual big_integer &modulo(
             big_integer &dividend,
             big_integer const &divisor,
             big_integer::multiplication_rule multiplication_rule) const = 0;
-        
+
     };
-    
+
     class trivial_division final:
         public division
     {
-    
+
     public:
-        
+
         big_integer &divide(
             big_integer &dividend,
             big_integer const &divisor,
             big_integer::multiplication_rule multiplication_rule) const override;
-        
+
         big_integer &modulo(
             big_integer &dividend,
             big_integer const &divisor,
             big_integer::multiplication_rule multiplication_rule) const override;
-        
+
     };
-    
+
     class Newton_division final:
         public division
     {
-    
+
     public:
-        
+
         big_integer &divide(
             big_integer &dividend,
             big_integer const &divisor,
             big_integer::multiplication_rule multiplication_rule) const override;
-        
+
         big_integer &modulo(
             big_integer &dividend,
             big_integer const &divisor,
             big_integer::multiplication_rule multiplication_rule) const override;
-        
+
     };
-    
+
     class Burnikel_Ziegler_division final:
         public division
     {
-    
+
     public:
-        
+
         big_integer &divide(
             big_integer &dividend,
             big_integer const &divisor,
             big_integer::multiplication_rule multiplication_rule) const override;
-        
+
         big_integer &modulo(
             big_integer &dividend,
             big_integer const &divisor,
             big_integer::multiplication_rule multiplication_rule) const override;
-        
+
     };
+
+
+private:
+
+    void clear();
+
+    void copy_from(
+            big_integer const &other);
+
+    void initialize_from(
+            int const *digits,
+            size_t digits_count);
+
+    void initialize_from(
+            std::vector<int> const &digits,
+            size_t digits_count);
+
+    void initialize_from(
+            std::string const &value,
+            size_t base);
+
+private:
+
+    static void print_byte(
+            std::ostream &stream,
+            unsigned char byte_value);
+
+    static void dump_int_value(
+            std::ostream &stream,
+            int value);
+
+public:
+
+    void dump_value(
+            std::ostream &stream) const;
+
 
 private:
 
     int _oldest_digit;
     unsigned int *_other_digits;
     allocator* _allocator;
+
+private:
+public:
+
+    big_integer &change_sign();
+
+    inline int get_digits_count() const noexcept;
+
+    inline int sign() const noexcept;
+
+    inline bool is_equal_to_zero() const noexcept;
+
+    inline unsigned int get_digit(int position) const noexcept;
 
 public:
 
@@ -187,16 +236,16 @@ public:
 public:
 
     ~big_integer() noexcept;
-    
+
     big_integer(
         big_integer const &other);
 
     big_integer &operator=(
         big_integer const &other);
-    
+
     big_integer(
         big_integer &&other) noexcept;
-    
+
     big_integer &operator=(
         big_integer &&other) noexcept;
 
@@ -225,7 +274,7 @@ public:
 public:
 
     big_integer operator-() const;
-    
+
     big_integer &operator+=(
         big_integer const &other);
 
@@ -234,7 +283,7 @@ public:
 
     big_integer operator+(
         std::pair<big_integer, allocator *> const &other) const;
-    
+
     big_integer &operator-=(
         big_integer const &other);
 
@@ -243,7 +292,7 @@ public:
 
     big_integer operator-(
         std::pair<big_integer, allocator *> const &other) const;
-    
+
     big_integer &operator*=(
         big_integer const &other);
 
@@ -252,7 +301,7 @@ public:
 
     big_integer operator*(
         std::pair<big_integer, allocator *> const &other) const;
-    
+
     big_integer &operator/=(
         big_integer const &other);
 
@@ -363,11 +412,11 @@ public:
         big_integer::multiplication_rule multiplication_rule = big_integer::multiplication_rule::trivial);
 
 public:
-    
+
     friend std::ostream &operator<<(
         std::ostream &stream,
         big_integer const &value);
-    
+
     friend std::istream &operator>>(
         std::istream &stream,
         big_integer &value);
@@ -375,7 +424,7 @@ public:
 private:
 
     [[nodiscard]] allocator *get_allocator() const noexcept override;
-    
+
 };
 
 #endif //MATH_PRACTICE_AND_OPERATING_SYSTEMS_BIGINT_H

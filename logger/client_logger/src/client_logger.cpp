@@ -2,7 +2,7 @@
 #include "client_logger.h"
 #include <memory>
 
-std::unordered_map<std::string, std::pair<std::shared_ptr<std::ofstream>, size_t>> client_logger::_all_streams;
+static std::unordered_map<std::string, std::pair<std::unique_ptr<std::ofstream>, size_t>> _all_streams;
 
 client_logger::client_logger(const client_logger &other) {
     this->_format_string = other._format_string;
@@ -55,30 +55,32 @@ void client_logger::add_to_all_streams()
 
 void client_logger::clear_object()
 {
-    for (auto iter = _streams.begin(); iter != _streams.end(); ++iter)
+    for (auto& pair: _streams)
     {
-        auto &tmp = _all_streams[iter->first];
-        if (tmp.second == 1) {
-            tmp.first->close();
+        auto it = _all_streams.find(pair.first);
+        if (it != _all_streams.end() && --it->second.second) {
+            it->second.first->close();
 //            delete tmp.first;
-            --tmp.second;
+            _all_streams.erase(it);
         }
     }
 }
 
 void client_logger::insert_in_stream(const std::string &path, std::set<logger::severity> severity_set)
 {
-    auto stream = std::make_shared<std::ofstream>(path);
+    auto stream = std::make_unique<std::ofstream>(path);
+    if (stream->is_open()) {
+        this->_streams.emplace(path, std::make_pair(stream.get(), std::move(severity_set)));
 
-    this->_streams.emplace(std::make_pair(path, std::make_pair(stream.get(), std::move(severity_set))));
-
-    if (_all_streams.find(path) != _all_streams.end())
-    {
-        ++_all_streams.find(path)->second.second;
-    }
-    else
-    {
-        _all_streams.emplace(std::make_pair(path, std::make_pair(stream.get(), 1)));
+        auto it = _all_streams.find(path);
+        if (it != _all_streams.end())
+        {
+            ++it->second.second;
+        }
+        else
+        {
+            _all_streams.emplace(path, std::make_pair(std::move(stream), 1));
+        }
     }
 }
 
