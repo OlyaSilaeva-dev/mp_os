@@ -1,9 +1,9 @@
 #ifndef MATH_PRACTICE_AND_OPERATING_SYSTEMS_TEMPLATE_REPO_B_TREE_H
 #define MATH_PRACTICE_AND_OPERATING_SYSTEMS_TEMPLATE_REPO_B_TREE_H
 
-#include <../../associative_container/search_tree/include/search_tree.h>
-#include <../../logger/logger/include/logger_builder.h>
-#include "../../allocator/allocator/include/allocator.h"
+#include "search_tree.h"
+#include "logger_builder.h"
+#include "allocator.h"
 
 template<
         typename tkey,
@@ -117,7 +117,7 @@ public:
             b_tree<tkey, tvalue> const &other);
 
     b_tree<tkey, tvalue> &operator=(
-            b_tree<tkey, tvalue> const &other);
+            b_tree<tkey, tvalue> &other);
 
     b_tree(
             b_tree<tkey, tvalue> &&other) noexcept;
@@ -669,7 +669,7 @@ template<
         typename tkey,
         typename tvalue>
 b_tree<tkey, tvalue> &b_tree<tkey, tvalue>::operator=(
-        b_tree<tkey, tvalue> const &other)
+        b_tree<tkey, tvalue> &other)
 {
     if (this != &other)
     {
