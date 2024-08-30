@@ -9,11 +9,21 @@
 #include <allocator_guardant.h>
 #include <not_implemented.h>
 
+unsigned int sum_two_digits(
+        const unsigned int &first_value,
+        const unsigned int &second_value,
+        unsigned int &carry);
+
+unsigned int multiply_two_digits(
+        const unsigned int &first_multiplier,
+        const unsigned int &second_multiplier,
+        unsigned int &carry);
+
+
+
 class big_integer final:
     allocator_guardant
 {
-private:
-
 public:
 
     enum class multiplication_rule
@@ -27,17 +37,13 @@ private:
 
     class multiplication
     {
-
     public:
 
         virtual ~multiplication() noexcept = default;
 
-    public:
-
         virtual big_integer &multiply(
             big_integer &first_multiplier,
             big_integer const &second_multiplier) const = 0;
-
     };
 
     class trivial_multiplication final:
@@ -45,7 +51,6 @@ private:
     {
 
     public:
-
         big_integer &multiply(
             big_integer &first_multiplier,
             big_integer const &second_multiplier) const override;
@@ -111,9 +116,7 @@ private:
     class trivial_division final:
         public division
     {
-
     public:
-
         big_integer &divide(
             big_integer &dividend,
             big_integer const &divisor,
@@ -171,11 +174,11 @@ private:
             big_integer const &other);
 
     void initialize_from(
-            int const *digits,
+            unsigned int const *digits,
             size_t digits_count);
 
     void initialize_from(
-            std::vector<int> const &digits,
+            std::vector<unsigned int> const &digits,
             size_t digits_count);
 
     void initialize_from(
@@ -200,32 +203,52 @@ public:
 
 private:
 
-    int _oldest_digit;
-    unsigned int *_other_digits;
+    int _sign;
+    unsigned int *_digits;
+    size_t _size;
     allocator* _allocator;
 
 private:
-public:
+    template<typename Func>
+        big_integer bitwise_operations(Func op, big_integer const& other) const;
 
+    big_integer &_remove_leading_zeros();
+
+    big_integer &reverse();
+
+    big_integer abs();
+
+    void _shift_right();
+
+    void _add_digit(unsigned int digit);
+
+    big_integer &multiply_by_a_number(
+            big_integer &first_multiplier,
+            unsigned int const &second_multiplier) const;
+
+
+public:
     big_integer &change_sign();
 
-    inline int get_digits_count() const noexcept;
+    inline size_t get_digits_count() const noexcept;
 
     inline int sign() const noexcept;
 
     inline bool is_equal_to_zero() const noexcept;
 
-    inline unsigned int get_digit(int position) const noexcept;
+    inline unsigned int get_digit(size_t position) const noexcept;
 
 public:
 
     big_integer(
-        int const *digits,
+        unsigned int const *digits,
         size_t digits_count,
+        int sign = 1,
         allocator *allocator = nullptr);
 
     explicit big_integer(
-        std::vector<int> const &digits,
+        std::vector<unsigned int> const &digits,
+        int sign = 1,
         allocator *allocator = nullptr);
 
     explicit big_integer(
@@ -301,6 +324,12 @@ public:
 
     big_integer operator*(
         std::pair<big_integer, allocator *> const &other) const;
+
+    const big_integer operator*=(
+            unsigned int const &value) const;
+
+    big_integer operator*(
+            unsigned int const &value) const;
 
     big_integer &operator/=(
         big_integer const &other);

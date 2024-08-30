@@ -31,6 +31,11 @@ target_link_libraries(
         mp_os_arthmtc_bg_intgr_tests_bgnt
         PUBLIC
         mp_os_arthmtc_bg_intgr)
+
+target_link_libraries(
+        mp_os_arthmtc_bg_intgr_tests_bgnt
+        PUBLIC
+        mp_os_allctr_allctr_glbl_hp)
 set_target_properties(
         mp_os_arthmtc_bg_intgr_tests_bgnt PROPERTIES
         LANGUAGES CXX

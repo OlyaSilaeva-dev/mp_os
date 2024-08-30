@@ -1,8 +1,11 @@
 #include <gtest/gtest.h>
-
-#include <big_integer.h>
 #include <client_logger.h>
 #include <operation_not_supported.h>
+#include <string>
+#include <algorithm>
+//#include "allocator_global_heap.h"
+
+#include "big_integer.h"
 
 logger *create_logger(
     std::vector<std::pair<std::string, logger::severity>> const &output_file_streams_setup,
@@ -37,19 +40,20 @@ TEST(positive_tests, test1)
                 logger::severity::information
             },
         });
-    
+
     big_integer bigint_1("32850346459076457453464575686784654");
     big_integer bigint_2("423534596495087569087908753095322");
     big_integer result_of_sum = bigint_1 + bigint_2;
-    
+
     std::stringstream ss;
     ss << result_of_sum;
     std::string result_string = ss.str();
-    
+
     EXPECT_TRUE(result_string == "33273881055571545022552484439879976");
-    
+
     delete logger;
 }
+
 
 TEST(positive_tests, test2)
 {
@@ -60,18 +64,18 @@ TEST(positive_tests, test2)
                 logger::severity::information
             },
         });
-    
+
     big_integer bigint_1("32850346459076457453464575686784654");
     big_integer bigint_2("0000042353459649508756908790875309532245366457546765745645647567575");
-    
+
     big_integer result_of_sub = bigint_1 - bigint_2;
-    
+
     std::stringstream ss;
     ss << result_of_sub;
     std::string result_string = ss.str();
-    
+
     EXPECT_TRUE(result_string == "-42353459649508756908790875276681898907381089312281069960782921");
-    
+
     delete logger;
 }
 
@@ -98,6 +102,7 @@ TEST(positive_tests, test3)
 
     delete logger;
 }
+
 
 TEST(positive_tests, test4)
 {
@@ -207,11 +212,38 @@ TEST(positive_tests, test9)
     delete logger;
 }
 
+
+void print_big_int(big_integer* bigInteger) {
+    size_t size = bigInteger->get_digits_count();
+    if (bigInteger->sign() < 0) {
+        std::cout<<'-';
+    }
+    for(int i = 0; i < size; i++) {
+        std::cout << bigInteger->get_digit(i) << ' ';
+    }
+    std::cout << std::endl;
+}
+
+
 int main(
     int argc,
-    char **argv)
-{
+    char **argv) {
     testing::InitGoogleTest(&argc, argv);
-    
+
     return RUN_ALL_TESTS();
+
+//    big_integer bigint_1("32850346459076457453464575686784654");
+//    big_integer bigint_2("12342357553253");
+//
+//    big_integer result_of_remainder = bigint_1 % bigint_2;
+
+//    big_integer result_of_remainder = bigint_1 / bigint_2;
+//    big_integer bigint_1("429496729510000000");
+//    big_integer bigint_2("42949672951");
+//    big_integer result_of_remainder = bigint_1 / bigint_2;
+
+//    std::cout << result_of_remainder;
+//    unsigned int u = UINT32_MAX;
+
+    return 0;
 }

@@ -4,7 +4,6 @@
 
 allocator_sorted_list::~allocator_sorted_list()
 {
-    throw not_implemented("allocator_sorted_list::~allocator_sorted_list()", "your code should be here...");
 }
 
 allocator_sorted_list::allocator_sorted_list(

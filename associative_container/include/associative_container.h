@@ -46,7 +46,6 @@ public:
                 key(other.key),
                 value(other.value)
         {
-            int x = 10;
         }
 
         key_value_pair(
@@ -85,7 +84,6 @@ public:
 
         ~key_value_pair()
         {
-            int x = 10;
         }
 
     };
