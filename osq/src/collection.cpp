@@ -1,9 +1,13 @@
-#include <utility>
 #include "collection.h"
 
 collection::collection(
-        std::string collection_name,
-        search_tree<int, std::string> *data) : _collection_name(std::move(collection_name)){
+        collection const &other) : _collection_name(other._collection_name){
+    _data = other._data;
+}
+
+collection::collection(
+        std::string &collection_name,
+        search_tree<int, std::string> *data) : _collection_name(collection_name){
     _data = data;
 }
 
@@ -29,9 +33,18 @@ collection &collection::remove_from_the_collection(int key) {
     return *this;
 }
 
-std::basic_string<char> collection::get_from_collection(int key) {
+std::basic_string<char> collection::get_record_from_collection(int key) {
     return (std::string)(_data->obtain(key));
 }
+
+std::vector<typename associative_container<int, std::string>::key_value_pair> collection::get_set_records_from_collection(int minbound, int maxbound) {
+    auto result = (std::vector<typename associative_container<int, std::string>::key_value_pair>)(_data->obtain_between(minbound, maxbound,
+                                                                                                                        true,
+                                                                                                                        true));
+    return result;
+}
+
+
 
 
 

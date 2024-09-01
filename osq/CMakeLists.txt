@@ -5,9 +5,8 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(
         mp_os_osq
-        src/collection.cpp
         mp_os_osq.cpp
-)
+        src/collection.cpp src/scheme.cpp include/scheme.h src/pull.cpp include/pull.h src/client.cpp include/client.h)
 
 target_include_directories(
         mp_os_osq
@@ -17,6 +16,7 @@ target_include_directories(
         ../associative_container
         ../associative_container/search_tree/indexing_tree/b_tree
         ./include
+        ./src
 )
 
 target_link_libraries(

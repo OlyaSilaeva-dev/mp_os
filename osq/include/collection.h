@@ -1,7 +1,3 @@
-//
-// Created by olya- on 30.08.2024.
-//
-
 #ifndef MP_OS_COLLECTION_H
 #define MP_OS_COLLECTION_H
 
@@ -16,7 +12,10 @@ private:
 
 public:
     collection(
-            std::string collection_name,
+            collection const &other);
+
+    collection(
+            std::string &collection_name,
             search_tree<int, std::string> *data);
 
     collection &operator=(
@@ -34,7 +33,9 @@ public:
 
     collection &add_to_collection(int key, std::string value);
 
-    std::basic_string<char> get_from_collection(int key);
+    std::basic_string<char> get_record_from_collection(int key);
+
+    std::vector<typename associative_container<int, std::string>::key_value_pair> get_set_records_from_collection(int minbound, int maxbound);
 
     collection &remove_from_the_collection(int key);
 };

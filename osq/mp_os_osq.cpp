@@ -1,9 +1,4 @@
-//
-// Created by olya- on 30.08.2024.
-//
-
-#include "mp_os_osq.h"
-#include "collection.h"
+#include "client.h"
 #include <client_logger_builder.h>
 
 namespace comparison {
@@ -107,8 +102,7 @@ logger *create_logger(
     return built_logger;
 }
 
-
-int main() {
+int main(int argc, char* argv[]) {
     std::function<int(int const &, int const &)> keys_comparer = comparison::int_comparer();
 
     logger *logger = create_logger(std::vector<std::pair<std::string, logger::severity>> {
@@ -117,30 +111,14 @@ int main() {
 
     logger->trace("testOsq started");
 
-    search_tree<int, std::string> *tree = new b_tree<int, std::string>(24, keys_comparer, nullptr, logger);
+    search_tree<int, pull> *storage = new b_tree<int, pull>(24, keys_comparer, nullptr, logger);
 
-//    tree->insert(1, std::string("a"));
-//    tree->insert(2, std::string("b"));
-//    tree->insert(15, std::string("c"));
-//    tree->insert(3, std::string("d"));
-//    tree->insert(4, std::string("e"));
-//    tree->insert(100, std::string("f"));
-//    tree->insert(24, std::string("g"));
-//    tree->insert(456, std::string("h"));
-//    tree->insert(101, std::string("j"));
-//    tree->insert(45, std::string("k"));
-//    tree->insert(193, std::string("l"));
-//    tree->insert(534, std::string("m"));
 //
-//    auto result = tree->obtain_between(1, 456, true, true);
-//    for (auto t: result) {
-//        std::cout << t.value << std::endl;
-//    }
+//    std::string my_col = "my_collection";
+//    auto _collect = new collection(my_col, tree);
+//
+//    _collect->add_to_collection(1, "hello");
 
-    std::string my_col = "my_collection";
-    auto _collect = new collection(my_col, tree);
-
-    _collect->add_to_collection(1, "hello");
-    std::string t = _collect->get_from_collection(1);
-    std::cout << t;
+    std::string file = "C:/src/GitHub/mp_os/osq/test.txt";
+    file_processing(file, storage, keys_comparer, nullptr, nullptr);
 }
