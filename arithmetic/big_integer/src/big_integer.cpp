@@ -23,11 +23,13 @@ unsigned int multiply_two_digits(const unsigned int &first_multiplier,
     unsigned int mid_mult2 = a_lo * b_hi;
     unsigned int high_mult = a_hi * b_hi;
 
-
     unsigned int result_lo = (low_mult & mask);
     unsigned int result_hi = (low_mult >> shift) + (mid_mult1 & mask) + (mid_mult2 & mask);
+
     unsigned int result = result_lo | ((result_hi & mask) << shift);
+
     carry = high_mult + (mid_mult1 >> shift) + (mid_mult2 >> shift) + (result_hi >> shift);
+
     return result;
 }
 
@@ -43,7 +45,7 @@ unsigned int sum_two_digits(const unsigned int &first_summand,
     unsigned int upper_sum = (first_summand >> shift) + (second_summand >> shift) + carry;
     carry = upper_sum >> shift;
 
-    return (lower_sum & mask) | (upper_sum << shift);
+    return (lower_sum & mask) | ((upper_sum & mask) << shift);
 }
 
 
@@ -56,7 +58,7 @@ big_integer &big_integer::multiply_by_a_number(big_integer &first_multiplier,
     for(size_t i = 0; i < size; i++) {
         unsigned int cur_digit = first_multiplier.get_digit(i);
         unsigned int result_digit = multiply_two_digits(cur_digit, second_multiplier, carry);
-        result[i + 1] += carry;
+        result[i + 1] +=  carry;
         result[i] = sum_two_digits(result[i], result_digit, carry);
         result[i + 1] += carry;
     }
@@ -73,23 +75,31 @@ big_integer &big_integer::trivial_multiplication::multiply(
     size_t m = first_multiplier._size;
     size_t n = second_multiplier._size;
 
-    std::vector<unsigned int> result_digits(m + n, 0);
+    std::vector<unsigned int> result_digits(m + n + 1, 0);
+    int result_sign = first_multiplier.sign() * second_multiplier.sign();
 
+    unsigned int carry = 0;
     for (size_t i = 0; i < m; ++i) {
-        unsigned int carry = 0;
-        for (size_t j = 0; j < n; ++j) {
+        for (size_t j = 0; j < n || carry != 0; ++j) {
             unsigned int a = first_multiplier.get_digit(i);
-            unsigned int b = second_multiplier.get_digit(j);
+            unsigned int b = j < n ? second_multiplier.get_digit(j) : 0;
 
             unsigned int operation_result = multiply_two_digits(a, b, carry);
-            result_digits[i + j + 1] += carry;
+            unsigned int carry1;
+            result_digits[i + j + 1] = sum_two_digits(result_digits[i + j + 1], carry, carry1);
+            if(i + j + 1 < m + n)
+                result_digits[i + j + 2] += carry1;
+
             result_digits[i + j] = sum_two_digits(result_digits[i + j], operation_result, carry);
-            result_digits[i + j + 1] += carry;
+            result_digits[i + j + 1] = sum_two_digits(result_digits[i + j + 1], carry, carry1);
+            if(i + j + 2 < m + n + 1)
+                result_digits[i + j + 2] += carry1;
         }
     }
 
     first_multiplier.initialize_from(result_digits, result_digits.size());
     first_multiplier._remove_leading_zeros();
+    first_multiplier._sign = result_sign;
     return first_multiplier;
 }
 
