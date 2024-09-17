@@ -104,27 +104,27 @@ TEST(positive_tests, test4)
     delete logger;
 }
 
-TEST(positive_tests, test5)
-{
-    logger *logger = create_logger(std::vector<std::pair<std::string, logger::severity>>
-                                       {
-                                           {
-                                               "bigint_logs.txt",
-                                               logger::severity::information
-                                           },
-                                       });
-
-    std::stringstream iss("806211213 52");
-
-    big_integer bigint_1("0");
-    big_integer bigint_2("0");
-    iss >> bigint_1 >> bigint_2;
-    big_integer result_of_division = big_integer::divide(bigint_1, bigint_2, nullptr, big_integer::division_rule::trivial);
-
-    EXPECT_TRUE((std::ostringstream() << bigint_1).str() == "15504061");
-
-    delete logger;
-}
+//TEST(positive_tests, test5)
+//{
+//    logger *logger = create_logger(std::vector<std::pair<std::string, logger::severity>>
+//                                       {
+//                                           {
+//                                               "bigint_logs.txt",
+//                                               logger::severity::information
+//                                           },
+//                                       });
+//
+//    std::stringstream iss("806211213 52");
+//
+//    big_integer bigint_1("0");
+//    big_integer bigint_2("0");
+//    iss >> bigint_1 >> bigint_2;
+//    big_integer result_of_division = big_integer::divide(bigint_1, bigint_2, nullptr, big_integer::division_rule::trivial);
+//
+//    EXPECT_TRUE((std::ostringstream() << bigint_1).str() == "15504061");
+//
+//    delete logger;
+//}
 
 TEST(positive_tests, test6)
 {

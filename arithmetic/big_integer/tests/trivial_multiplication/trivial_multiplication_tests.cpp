@@ -118,28 +118,27 @@ TEST(positive_tests, test4)
     delete logger;
 }
 
-//TEST(positive_tests, test5)
-//{
-//    logger *logger = create_logger(std::vector<std::pair<std::string, logger::severity>>
-//                                       {
-//                                           {
-//                                               "bigint_logs.txt",
-//                                               logger::severity::information
-//                                           },
-//                                       });
-//
-//    std::stringstream iss("8062112134235893450865580976575 5224253464575690753458936456445353");
-//
-//    big_integer bigint_1("0");
-//    big_integer bigint_2("0");
-//    iss >> bigint_1 >> bigint_2;
-//    big_integer::multiply(bigint_1, bigint_2, nullptr, big_integer::multiplication_rule::trivial);
-//
-//    std::cout << bigint_1 << std::endl;
-//    EXPECT_TRUE((std::ostringstream() << bigint_1).str() == "42118517249079582762848120969952324453639154832768688602860605975");
-//
-//    delete logger;
-//}
+TEST(positive_tests, test5)
+{
+    logger *logger = create_logger(std::vector<std::pair<std::string, logger::severity>>
+                                       {
+                                           {
+                                               "bigint_logs.txt",
+                                               logger::severity::information
+                                           },
+                                       });
+
+    std::stringstream iss("8062112134235893450865580976575 5224253464575690753458936456445353");
+
+    big_integer bigint_1("0");
+    big_integer bigint_2("0");
+    iss >> bigint_1 >> bigint_2;
+    big_integer::multiply(bigint_1, bigint_2, nullptr, big_integer::multiplication_rule::trivial);
+
+    EXPECT_TRUE((std::ostringstream() << bigint_1).str() == "42118517249079582762848120969952324453639154832768688602860605975");
+
+    delete logger;
+}
 
 TEST(positive_tests, test6)
 {

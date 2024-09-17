@@ -172,7 +172,7 @@ big_integer &big_integer::trivial_division::divide(
         big_integer::multiplication_rule multiplication_rule) const {
 
     if (divisor.is_equal_to_zero()) {
-        throw std::runtime_error("Division by zero");
+        throw std::logic_error("Division by zero");
     }
 
     if (dividend.is_equal_to_zero()) {
@@ -470,7 +470,7 @@ inline int big_integer::sign() const noexcept {
 }
 
 inline bool big_integer::is_equal_to_zero() const noexcept {
-    return *_digits == 0 && _size == 1;
+    return (*_digits == 0) && (_size == 1);
 }
 
 inline unsigned int big_integer::get_digit(
@@ -984,7 +984,6 @@ big_integer big_integer::operator<<(
 big_integer &big_integer::operator>>=(
         size_t shift) {
 
-//    size_t mask = sizeof(unsigned int) - 1;
     return *this;
 }
 
@@ -1124,7 +1123,12 @@ std::ostream &operator<<(
 std::istream &operator>>(
         std::istream &stream,
         big_integer &value) {
-    throw not_implemented("std::istream &operator>>(std::istream &, big_integer &)", "your code should be here...");
+    std::string value_str;
+
+    if (stream >> value_str) {
+        value = big_integer(value_str);
+    }
+    return stream;
 }
 
 [[nodiscard]] allocator *big_integer::get_allocator() const noexcept {
