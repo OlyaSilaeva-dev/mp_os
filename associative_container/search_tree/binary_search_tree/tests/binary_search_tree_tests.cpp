@@ -165,7 +165,6 @@ TEST(binarySearchTreePositiveTests, test1)
     search_tree<int, std::string> *bst = new binary_search_tree<int, std::string>(key_comparer(), nullptr, logger);
 
     bst->insert(5, "a");
-    std::cout << "here" << std::endl;
     bst->insert(2, "b");
     bst->insert(15, "c");
     bst->insert(3, "d");
